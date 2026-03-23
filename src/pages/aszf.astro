@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import { siteConfig } from "../content/site";
+---
+
+<Layout title="Általános Szerződési Feltételek" description="Gyermekagykontroll.hu Általános Szerződési Feltételek.">
+  <Section title="Általános Szerződési Feltételek">
+    <div class="max-w-3xl mx-auto prose prose-lg prose-primary">
+      <p>Tájékoztatjuk, hogy Ön mint vásárló (fogyasztó) a gyermekagykontroll.hu címen elérhető honlap használatával kinyilvánítja, hogy ismeri és elfogadja, az alábbi, a Ptk. (2013. évi V. törvény) 6:77-6:81.§ alapján megírt általános szerződési feltételeket.</p>
+      <p>Jelen dokumentum, kizárólag elektronikus formában kerül megkötésre. Az alábbi feltételekkel szabályozott szerződés a Ptk. szerint távollevők között létrejött szerződésnek minősül.</p>
+
+      <h3>1. Üzemeltetői adatok</h3>
+      <ul>
+        <li><strong>Név:</strong> {siteConfig.business.name}</li>
+        <li><strong>Székhely:</strong> {siteConfig.contact.address}</li>
+        <li><strong>Adószám:</strong> {siteConfig.business.taxNumber}</li>
+        <li><strong>Nyilvántartási szám:</strong> {siteConfig.business.registrationNumber}</li>
+        <li><strong>Telefon:</strong> {siteConfig.contact.phone}</li>
+        <li><strong>Email:</strong> {siteConfig.contact.email}</li>
+        <li><strong>Képviseli:</strong> Tihanyi Rita</li>
+      </ul>
+
+      <h3>2. Megvásárolható termékek, szolgáltatások köre</h3>
+      <p>Gyermekagykontroll tanfolyamok.</p>
+
+      <h3>3. Rendelési információk</h3>
+      <p>A tanfolyamokra az oldalon található jelentkezési űrlap kitöltésével lehet jelentkezni. A termékekre ÁFÁt nem számolunk fel.</p>
+      <p>Amennyiben az üzemeltető hibás árat tüntet fel a tanfolyam mellett, a tőle elvárható gondosság ellenére, és a termék ára annak általánosan elfogadott árától eltér, úgy az üzemeltető nem köteles a tanfolyamot a hibás áron szolgáltatni, de köteles a megrendelés visszaigazolásában felajánlani a vásárló részére a valós áron történő vásárlás lehetőségét.</p>
+
+      <h3>4. A megrendelések feldolgozása</h3>
+      <p>A megrendelések feldolgozása munkanapokon 10-16 óra között történik. A befizetésekről maximum 3 (jellemzően kevesebb) munkanapon belül küldünk visszajelzést.</p>
+
+      <h3>5. A megrendelt termék ellenértékének fizetésének módja</h3>
+      <p><strong>Banki utalással történő teljesítés:</strong> a visszaigazoló e-mailben megtalálja a bankszámlaszámunkat. Kérjük, az átutalás megjegyzésében írja be a résztvevő nevét és a tanfolyam dátumát! A tanfolyami helyeket a befizetések sorrendjében áll módunkban biztosítani.</p>
+      <p><strong>Személyes fizetés a tanfolyam előtt:</strong> Kivételes esetben elfogadunk személyes, készpénzes fizetést is a tanfolyamok előtt.</p>
+
+      <h3>6. Elállás joga</h3>
+      <p>A vásárló a tanfolyam kezdetét megelőző 48 óráig elállhat vásárlásától, ez után a tanfolyami jelentkezés időpontját áll módunkban változtatni, a díja nem visszatéríthető.</p>
+
+      <h3>7. Panaszok intézése</h3>
+      <p>Az üzemeltető a panaszról jegyzőkönyvet köteles felvenni, és a panaszt a felvétel napjától számított öt évig megőrizni. A hozzá érkezett panaszt a beérkezésétől számított 30 napon belül megvizsgálja és arra érdemi választ kell, hogy adjon.</p>
+
+      <h3>8. Adatkezelés</h3>
+      <p>Adatkezelési szabályaink mindenben megfelelnek a GDPR-irányelveknek.</p>
+
+      <h3>9. Egyéb rendelkezések</h3>
+      <p>A jelen általános szerződési feltételekben nem szabályozott kérdésekben a Ptk (2013.évi V. törvény), fogyasztói szerződéseknél a távollevők között kötött szerződésekről szóló 45/2014. kormányrendelet rendelkezései az irányadók.</p>
+    </div>
+  </Section>
+</Layout>

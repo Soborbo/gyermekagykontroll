@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import SignupForm from "../components/SignupForm.astro";
+---
+
+<Layout title="Jelentkezés" description="Jelentkezzen gyermekagykontroll vagy Tantorta tanfolyamra! A jelentkezés nem kötelező érvényű.">
+  <section class="bg-primary-700 text-white py-12 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl lg:text-4xl font-extrabold mb-4">Jelentkezés</h1>
+      <p class="text-lg text-primary-100 max-w-2xl mx-auto">
+        Töltse ki az alábbi űrlapot, és hamarosan visszajelzünk! A jelentkezés nem kötelező érvényű
+        – nincs szükség fizetésre a jelentkezéshez. Részletes tájékoztatót küldünk emailben.
+      </p>
+    </div>
+  </section>
+
+  <Section>
+    <SignupForm />
+  </Section>
+</Layout>

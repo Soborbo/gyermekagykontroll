@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import BenefitCard from "../components/BenefitCard.astro";
+import { benefits } from "../content/courses";
+---
+
+<Layout title="Mi az agykontroll?" description="Hogyan segít a gyermekagykontroll a tanulásban? Tudományos alapokon nyugvó módszer a gyerekek fejlesztésére.">
+  <Hero
+    title="A képzeleted csodákra képes"
+    subtitle="Tudományos nevén alkalmazott pszicho-neuro-immunológia – egy vallásoktól független, könnyen belátható tényeken alapuló módszer, amely a képzelet segítségével ér el mentális, lelki, sőt akár fizikai változásokat."
+    image="/images/tanfolyam/budapest-terem.jpg"
+    imageAlt="Gyermekagykontroll óra"
+  />
+
+  <Section title="Mi is az az agykontroll?">
+    <div class="max-w-3xl mx-auto space-y-6 text-lg leading-relaxed text-text-secondary">
+      <p>
+        Tudományos nevén <em>alkalmazott pszicho-neuro-immunológia</em>, egy olyan vallásoktól független,
+        könnyen belátható tényeken alapuló módszer, amely a képzeleted segítségével ér el mentális, lelki,
+        sőt akár fizikai változásokat.
+      </p>
+      <p>És kik lennének természetüknél fogva tehetségesebbek ebben, a képzelet használatában, mint a gyerekek?</p>
+    </div>
+  </Section>
+
+  <Section alt title="Tudtad, hogy...">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div class="text-center p-6">
+        <span class="text-5xl font-extrabold text-amber-400 block mb-3">6×</span>
+        <p class="text-text-secondary">A gyerekek – jobb képzelőtehetségük révén – akár <strong class="text-text">hatszor (!) jobb eredmény</strong> elérésére képesek, mint a felnőttek.</p>
+      </div>
+      <div class="text-center p-6">
+        <span class="text-5xl font-extrabold text-amber-400 block mb-3">20p</span>
+        <p class="text-text-secondary"><strong class="text-text">20 perc relaxálás 3 óra alvással ér fel</strong>, így a gyerekeknek több energiájuk marad a tanulásra.</p>
+      </div>
+      <div class="text-center p-6">
+        <span class="text-5xl font-extrabold text-amber-400 block mb-3">1.</span>
+        <p class="text-text-secondary">A <strong class="text-text">gyermekagykontroll hamarabb létezett</strong>, mint a felnőtteknek szóló tanfolyamok.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6 text-lg leading-relaxed text-text-secondary">
+        <p>
+          Szerinted a negatív gondolatok, a stressz, a kudarcok képesek beteggé tenni valakit?
+          A legtöbben egyetértünk ebben: igen. Ha így van, miért?
+        </p>
+        <p>
+          Azért, mert az agyunk olyan, mint egy <strong class="text-text">óriási teljesítményű szuperszámítógép</strong>,
+          ami parancsra vár – és ezt a parancsot az egész testünkkel végrehajtatja.
+        </p>
+        <p>
+          Ha a gondolataink képesek kihatni még a fizikumunkra is, mire lehetünk képesek a
+          <strong class="text-text">tudatos gondolkodás, az agyunk megfelelő önprogramozása, az agykontroll által?</strong>
+          Miért ne használnánk az előnyeit annak, aminek a hátrányait nap mint nap érezzük?
+        </p>
+      </div>
+      <div>
+        <img src="/images/tanfolyam/gyerekek-rajzolnak.jpg" alt="Gyerekek a tanfolyamon" class="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" loading="lazy" />
+      </div>
+    </div>
+  </Section>
+
+  <Section alt>
+    <div class="max-w-3xl mx-auto space-y-6 text-lg leading-relaxed text-text-secondary">
+      <p>
+        Az agykontroll erre született meg. Hogy <strong class="text-text">tudatossá tedd, milyen parancsokat adsz
+        a szervezetednek</strong>. A felhasználási területe hihetetlenül széles: a tanulástól, a hétköznapi
+        rutinok könnyebbé és hatékonyabbá tételén keresztül a személyiség fejlesztésén át a családi
+        és munkahelyi problémák kezeléséig – azaz <strong class="text-text">a teljes életünket fedi le</strong>.
+      </p>
+      <p>
+        A gyerekek számára ezt a tudást, ezt a lehetőséget nyitja meg a gyermekagykontroll.
+        Értelemszerű, hogy egy általános iskolásnak nem kezdhetünk az agy működéséről, EEG-görbékről beszélni –
+        pedig neki is nagy szüksége van mindezekre a technikákra. <strong class="text-text">Egy kisgyerek élete
+        még sokkal több munkával és stresszel zajlik, mint egy felnőtté</strong> – hiszen ő mindent most lát,
+        tapasztal és tanul meg először.
+      </p>
+    </div>
+  </Section>
+
+  <Section title="12 terület, amiben a gyermekagykontroll megváltoztathatja a résztvevők életét">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {benefits.map((b) => (
+        <BenefitCard icon={b.icon} title={b.title} text={b.text} />
+      ))}
+    </div>
+  </Section>
+
+  <Section alt>
+    <div class="max-w-3xl mx-auto space-y-6 text-lg leading-relaxed text-text-secondary">
+      <p>
+        Erre a komplex problémára, <strong class="text-text">a rossz álmok megszüntetésétől</strong> a
+        <strong class="text-text">figyelemproblémák</strong> és a <strong class="text-text">fizikai fájdalmak</strong>
+        kezelésén át a <strong class="text-text">rossz szokások</strong> megszüntetéséig és a
+        <strong class="text-text">pozitív gondolkodásra</strong>, „helyes programozásra" nevelésig nyújt
+        megoldást a gyermekagykontroll.
+      </p>
+      <p>
+        A <strong class="text-text">jobb és bal agyfélteke</strong> párhuzamos használatára nevel – hogy ne csak játékos
+        legyen, de logikus is, hogy ne csak rendszerekben tudjon gondolkodni, de a kreativitása is fejlődjön.
+      </p>
+      <p>
+        <strong class="text-text">Nem vallás</strong> és <strong class="text-text">nem világnézet</strong>,
+        de az agykontroll már gyermekkortól kezdve óriási segítséget nyújt a világban való helytálláshoz.
+        Gyermekeknek játékos, mesés, élvezetes formában.
+      </p>
+    </div>
+    <div class="text-center mt-10">
+      <a href="/jelentkezes" class="inline-flex items-center justify-center px-8 py-4 bg-coral-500 hover:bg-coral-600 text-white font-bold rounded-xl text-lg transition-all hover:scale-105 shadow-lg">
+        Jelentkezem a tanfolyamra!
+      </a>
+    </div>
+  </Section>
+
+  <!-- YouTube videó -->
+  <Section title="Ismerje meg az agykontrollt közelebbről">
+    <div class="max-w-3xl mx-auto">
+      <div class="aspect-video rounded-2xl overflow-hidden shadow-xl">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/goRfxnsRzr0"
+          title="Gyermekagykontroll bemutató"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </Section>
+</Layout>

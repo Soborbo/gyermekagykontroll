@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import { courses } from "../content/courses";
+
+const course = courses[1];
+---
+
+<Layout title="Tantorta tréning" description="Tantorta – gyors és hatékony tanulási módszerek 10-14 éveseknek. Tanulásmódszertani tréning felsősöknek.">
+  <Hero
+    title="Tantorta – hatékony tanulási módszerek felsősöknek"
+    subtitle="Tanulásmódszertani tréning, ahol a gyerekek megtanulják, hogyan tanuljanak hatékonyan: gondolattérkép, memóriatechnikák, időbeosztás."
+    image="/images/tanfolyam/tantorta-hero.webp"
+    imageAlt="Tantorta tréning"
+    ctaText="Jelentkezem!"
+    ctaHref="/jelentkezes?tanfolyam=tantorta"
+  />
+
+  <Section title="Mit tanul a gyermeked a Tantortán?">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {[
+        { title: "Gondolattérkép", text: "Vizuális tanulási technika, amellyel bármilyen tananyagot könnyen és gyorsan feldolgozhat." },
+        { title: "Memóriatechnikák", text: "Hatékony módszerek a hosszú távú memória fejlesztésére és az információk megjegyzésére." },
+        { title: "Időbeosztás", text: "Megtanulja beosztani az idejét, hogy hatékonyabban tanuljon és több szabadideje maradjon." },
+        { title: "Jegyzetelés", text: "Korszerű jegyzetelési technikák, amelyekkel az órai anyagot is könnyebben sajátítja el." },
+        { title: "Koncentráció", text: "Gyakorlatok a figyelem összpontosítására és a tanulási zavarok leküzdésére." },
+        { title: "Motiváció", text: "Belső motiváció erősítése, célkitűzés és az önbizalom fejlesztése a tanulás terén." },
+      ].map((item) => (
+        <div class="bg-surface-alt rounded-2xl p-6 border border-border">
+          <h3 class="text-lg font-bold text-primary-800 mb-2">{item.title}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section alt title="Időpontok és árak">
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-border text-center">
+      <h3 class="text-3xl font-extrabold text-primary-800 mb-6">{course.priceLabel}</h3>
+      <div class="space-y-2 text-text-secondary mb-6">
+        <p>Kedvezmény: <strong class="text-text">{course.siblingDiscountLabel}</strong></p>
+        <p>Korosztály: <strong class="text-text">{course.ageRange}</strong></p>
+        <p>Időtartam: <strong class="text-text">{course.duration}</strong></p>
+      </div>
+      <h4 class="font-bold text-primary-800 mb-4">Legközelebbi időpont:</h4>
+      <div class="space-y-3 mb-8">
+        {course.dates.map((d) => (
+          <div class="flex justify-center gap-4 text-lg">
+            <span class="font-semibold text-primary-700">{d.date}</span>
+            <span class="text-text-secondary">–</span>
+            <span class="text-text-secondary">{d.location}</span>
+          </div>
+        ))}
+      </div>
+      <a href="/jelentkezes?tanfolyam=tantorta" class="inline-flex items-center justify-center px-8 py-4 bg-coral-500 hover:bg-coral-600 text-white font-bold rounded-xl text-lg transition-all hover:scale-105 shadow-lg">
+        Jelentkezés a Tantortára
+      </a>
+      <p class="text-sm text-text-secondary mt-4">A jelentkezés nem kötelező érvényű – nincs szükség fizetésre a jelentkezéshez.</p>
+    </div>
+  </Section>
+</Layout>

@@ -1,0 +1,49 @@
+---
+import { siteConfig } from "../content/site";
+---
+
+<footer class="bg-primary-800 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      <div>
+        <h3 class="text-xl font-extrabold font-heading mb-4">Gyermekagykontroll</h3>
+        <p class="text-primary-200 text-sm leading-relaxed">
+          Tihanyi Rita gyermekagykontroll-oktató. Több mint 15 éve segítek gyerekeknek abban,
+          hogy a gondolataik erejét a javukra fordítsák.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold font-heading mb-4">Elérhetőségek</h4>
+        <ul class="space-y-2 text-primary-200 text-sm">
+          <li>
+            <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`} class="hover:text-amber-400 transition-colors">
+              {siteConfig.contact.phone}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-amber-400 transition-colors">
+              {siteConfig.contact.email}
+            </a>
+          </li>
+          <li>{siteConfig.contact.address}</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold font-heading mb-4">Oldalak</h4>
+        <ul class="space-y-2 text-primary-200 text-sm">
+          <li><a href="/tanulas" class="hover:text-amber-400 transition-colors">Mi az agykontroll?</a></li>
+          <li><a href="/gyermekagykontroll" class="hover:text-amber-400 transition-colors">A tanfolyam</a></li>
+          <li><a href="/jelentkezes" class="hover:text-amber-400 transition-colors">Jelentkezés</a></li>
+          <li><a href="/aszf" class="hover:text-amber-400 transition-colors">ÁSZF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-primary-700 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-primary-300">
+      <p>&copy; {new Date().getFullYear()} {siteConfig.business.name} Minden jog fenntartva.</p>
+      <p>Adószám: {siteConfig.business.taxNumber}</p>
+    </div>
+  </div>
+</footer>

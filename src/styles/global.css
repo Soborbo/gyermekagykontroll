@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0f4fa;
+  --color-primary-100: #dce5f3;
+  --color-primary-200: #b8cbe7;
+  --color-primary-300: #8daad8;
+  --color-primary-400: #6389c6;
+  --color-primary-500: #3d6aab;
+  --color-primary-600: #2d5490;
+  --color-primary-700: #1e3a5f;
+  --color-primary-800: #162c48;
+  --color-primary-900: #0f1e31;
+
+  --color-amber-50: #fff9eb;
+  --color-amber-100: #ffefc2;
+  --color-amber-200: #ffdf85;
+  --color-amber-300: #ffc94d;
+  --color-amber-400: #f5a623;
+  --color-amber-500: #e09000;
+  --color-amber-600: #b87300;
+
+  --color-coral-500: #e8542f;
+  --color-coral-600: #d04525;
+  --color-coral-700: #b83a1f;
+
+  --color-green-50: #eafaf0;
+  --color-green-100: #c5f0d5;
+  --color-green-500: #2ecc71;
+  --color-green-600: #27ae60;
+
+  --color-surface: #fafbfd;
+  --color-surface-alt: #f0f4f8;
+  --color-text: #1a2332;
+  --color-text-secondary: #5a6b7f;
+  --color-border: #e2e8f0;
+
+  --font-heading: "Nunito", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+}

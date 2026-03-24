@@ -1,7 +1,7 @@
 # build output
 dist/
 
-# wrangler
+# wrangler local state
 .wrangler/
 # generated types
 .astro/

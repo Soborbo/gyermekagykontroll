@@ -4,7 +4,21 @@ import Hero from "../../components/Hero.astro";
 import Section from "../../components/Section.astro";
 ---
 
-<Layout title="Stresszoldó gyakorlatok gyerekeknek" description="Öt működő stresszoldó gyakorlat gyerekeknek – egyszerű technikák a stressz csökkentésére és a koncentráció növelésére.">
+<Layout
+  title="Stresszoldó gyakorlatok gyerekeknek"
+  description="Öt működő stresszoldó gyakorlat gyerekeknek – egyszerű technikák a stressz csökkentésére és a koncentráció növelésére."
+  ogImage="/images/tanfolyam/gyerekek-boldog.jpg"
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Öt működő stresszoldó gyakorlat gyerekeknek",
+    "description": "Egyszerű technikák a stressz csökkentésére és a koncentráció növelésére.",
+    "image": "https://gyermekagykontroll.hu/images/tanfolyam/gyerekek-boldog.jpg",
+    "author": { "@type": "Person", "name": "Tihanyi Rita" },
+    "publisher": { "@type": "Organization", "name": "Gyermekagykontroll" },
+    "datePublished": "2024-01-15"
+  }}
+>
   <Hero
     title="Öt működő stresszoldó gyakorlat gyerekeknek"
     subtitle="Egyszerű technikák, amelyek bárhol kivitelezhetők és jótékony hatással vannak a lélekre és a testre egyaránt."

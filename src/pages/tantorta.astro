@@ -7,7 +7,19 @@ import { courses } from "../content/courses";
 const course = courses[1];
 ---
 
-<Layout title="Tantorta tréning" description="Tantorta – gyors és hatékony tanulási módszerek 10-14 éveseknek. Tanulásmódszertani tréning felsősöknek.">
+<Layout
+  title="Tantorta tréning"
+  description="Tantorta – gyors és hatékony tanulási módszerek 10-14 éveseknek. Tanulásmódszertani tréning felsősöknek."
+  ogImage="/images/tanfolyam/tantorta-hero.webp"
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Tantorta tréning",
+    "description": "Tanulásmódszertani tréning felsősöknek: hatékony tanulási technikák, gondolattérkép, memóriatechnikák.",
+    "provider": { "@type": "Person", "name": "Tihanyi Rita" },
+    "offers": { "@type": "Offer", "price": "19900", "priceCurrency": "HUF", "availability": "https://schema.org/InStock" }
+  }}
+>
   <Hero
     title="Tantorta – hatékony tanulási módszerek felsősöknek"
     subtitle="Tanulásmódszertani tréning, ahol a gyerekek megtanulják, hogyan tanuljanak hatékonyan: gondolattérkép, memóriatechnikák, időbeosztás."

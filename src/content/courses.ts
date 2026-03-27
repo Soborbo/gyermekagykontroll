@@ -32,7 +32,7 @@ export const courses: Course[] = [
     siblingDiscountLabel: "4 000 Ft / fő",
     repeatPrice: 23000,
     repeatPriceLabel: "23 000 Ft / fő",
-    ageRange: "9-14 év",
+    ageRange: "Általános iskolás korú gyerekeknek",
     duration: "2 nap (hétvége)",
     dates: [
       { date: "2026. április 4-5.", location: "Budapest VI. kerület" },
@@ -57,7 +57,7 @@ export const courses: Course[] = [
     ageRange: "10-18 év (felső tagozat és középiskola)",
     duration: "1 nap",
     dates: [
-      { date: "2026. április 25.", location: "Budapest" },
+      { date: "2026. április 25.", location: "Zalaegerszeg" },
     ],
     grades: [
       "5. osztályos", "6. osztályos", "7. osztályos", "8. osztályos",

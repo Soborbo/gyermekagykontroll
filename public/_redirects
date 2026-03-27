@@ -1,0 +1,54 @@
+# Tartalom átirányítások (régi WordPress URL-ek -> új Astro oldalak)
+
+# Rólam oldal variánsok
+/about /rolam 301
+/tihanyi-rita /rolam 301
+/tihanyi-rita-agykontroll-oktato /rolam 301
+
+# Mi az agykontroll
+/mi-az-agykontroll /tanulas 301
+
+# Tanfolyam info
+/agykontroll-gyerekeknek /gyermekagykontroll-agykontroll-gyermekeknek 301
+
+# Tematika duplikátum
+/gyermekagykontroll-tematika-2 /gyermekagykontroll-tematika 301
+
+# GYIK
+/gyermekagykontroll-gyik /tanulas 301
+
+# Blog posztok átirányítása (régi top-level -> /blog/ alá)
+/gyermekagykontroll-tihanyi /blog/gyermekagykontroll-tihanyi 301
+/gyermekagykontroll-stressz /blog/gyermekagykontroll-stressz 301
+/emlekek-szigete /blog/emlekek-szigete 301
+/agykontroll-sikerek /blog/agykontroll-sikereim 301
+
+# Kapcsolat -> Jelentkezés
+/kapcsolat /jelentkezes 301
+
+# Jogi oldalak
+/adatkezelesi-tajekoztato /adatvedelmi-tajekoztato 301
+/altalanos-szerzodesi-feltetelek /aszf 301
+
+# Köszönő oldal
+/koszonet /koszonjuk 301
+/koszonjuk-a-jelentkezest /koszonjuk 301
+
+# Relaxáció & Meditáció -> Tanulás
+/relaxacio /tanulas 301
+/meditacio /tanulas 301
+
+# Landing oldalak -> Főoldal
+/zseni / 301
+/landing / 301
+/lehet-jobb / 301
+/ausztria / 301
+
+# WooCommerce oldalak -> Főoldal
+/fiokom / 301
+/fiokom/lost-password / 301
+/kosar / 301
+/penztar / 301
+/uzlet / 301
+/termek/* / 301
+/termekkategoria/* / 301

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Gyermekagykontroll",
   title: "Tihanyi Rita - Gyermekagykontroll oktató",
-  description: "Gyermekagykontroll tanfolyamok 9-14 éves gyerekeknek. 15+ év tapasztalat, Budapest és Balaton környéke. Jelentkezz most!",
+  description: "Gyermekagykontroll tanfolyamok általános iskolás korú gyerekeknek. 15+ év tapasztalat, Budapest és Balaton környéke. Jelentkezz most!",
   url: "https://gyermekagykontroll.hu",
   contact: {
     phone: "+36 30 620 7373",
@@ -31,7 +31,6 @@ export const navigation = [
   { label: "A tanfolyam", href: "/gyermekagykontroll-agykontroll-gyermekeknek" },
   { label: "Tematika", href: "/gyermekagykontroll-tematika" },
   { label: "Tantorta", href: "/tantorta" },
-  { label: "Relaxáció", href: "/relaxacio" },
   { label: "Blog", href: "/blog" },
   { label: "Rólam", href: "/rolam" },
 ] as const;

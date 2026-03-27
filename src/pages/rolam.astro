@@ -4,7 +4,21 @@ import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
 ---
 
-<Layout title="Tihanyi Rita" description="Tihanyi Rita gyermekagykontroll-oktató bemutatkozása. Több mint 15 év tapasztalat.">
+<Layout
+  title="Tihanyi Rita"
+  description="Tihanyi Rita gyermekagykontroll-oktató bemutatkozása. Több mint 15 év tapasztalat."
+  ogImage="/images/tanfolyam/hero-rita.jpg"
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tihanyi Rita",
+    "jobTitle": "Gyermekagykontroll-oktató, pedagógus",
+    "url": "https://gyermekagykontroll.hu/rolam",
+    "image": "https://gyermekagykontroll.hu/images/tanfolyam/hero-rita.jpg",
+    "worksFor": { "@type": "Organization", "name": "Gyermekagykontroll" },
+    "knowsAbout": ["gyermekagykontroll", "agykontroll", "pedagógia", "relaxáció"]
+  }}
+>
   <Hero
     title="Tihanyi Rita"
     subtitle="Gyermekagykontroll-oktató, pedagógus. Több mint 15 éve segítek gyerekeknek abban, hogy a gondolataik erejét a javukra fordítsák."
@@ -68,7 +82,7 @@ import Section from "../components/Section.astro";
         táncolok, hülyéskedek, mert hiszem, hogy a könnyedség, a nevetés, a „gyerekeskedés" nem tesz engem komolytalanná,
         legalábbis soha nem féltem ettől. Megjegyzem, tanulmányozom, milyen a zenéjük. Nem rohanok világgá a hangos zenétől,
         de tudom, mikor kell halkan hallgatni velük együtt.
-        <strong class="text-text">A humor, mint fontos tanulási „szakkifejezés"</strong> nélkülözhetetlen kelléke lett az
+        <strong class="text-text">A humor fontos, sokszor nélkülözhetetlen kelléke a tanítási és tanulási folyamatnak is.</strong> Nélkülözhetetlen kelléke lett az
         életemnek. Nem zavar, ha saját nyelvükön szólítanak meg, de figyelmeztetem őket, hogy mindent a maga helyén és idejében.
         Ezt meg ők tanulják tőlem.
       </p>

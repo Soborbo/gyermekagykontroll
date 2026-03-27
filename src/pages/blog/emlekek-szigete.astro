@@ -3,7 +3,17 @@ import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 ---
 
-<Layout title="A képzelet és az emlékek szigete" description="Junot Díaz Szigetlakó című mesekönyve kapcsán az önismeret, a családi hagyományok és a mesék fontosságáról gyermekkorban.">
+<Layout
+  title="A képzelet és az emlékek szigete"
+  description="Junot Díaz Szigetlakó című mesekönyve kapcsán az önismeret, a családi hagyományok és a mesék fontosságáról gyermekkorban."
+  schema={{
+    "@context": "https://schema.org", "@type": "BlogPosting",
+    "headline": "A képzelet és az emlékek szigete",
+    "author": { "@type": "Person", "name": "Tihanyi Rita" },
+    "publisher": { "@type": "Organization", "name": "Gyermekagykontroll" },
+    "datePublished": "2019-03-10"
+  }}
+>
   <section class="bg-primary-800 text-white py-16 lg:py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">

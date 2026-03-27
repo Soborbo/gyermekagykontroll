@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gyermekagykontroll.hu/sitemap-index.xml

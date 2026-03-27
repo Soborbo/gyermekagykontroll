@@ -12,11 +12,54 @@ const agykontroll = courses[0];
 const tantorta = courses[1];
 ---
 
-<Layout>
+<Layout
+  ogImage="/images/tanfolyam/nagy-kor.jpg"
+  schema={[
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Gyermekagykontroll - Tihanyi Rita",
+      "description": siteConfig.description,
+      "url": siteConfig.url,
+      "telephone": siteConfig.contact.phone,
+      "email": siteConfig.contact.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ruszek u. 22.",
+        "addressLocality": "Keszthely",
+        "postalCode": "8360",
+        "addressCountry": "HU"
+      },
+      "image": `${siteConfig.url}/images/tanfolyam/nagy-kor.jpg`,
+      "priceRange": "19 900 Ft - 42 000 Ft",
+      "founder": {
+        "@type": "Person",
+        "name": "Tihanyi Rita",
+        "jobTitle": "Gyermekagykontroll-oktató, pedagógus"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Gyermekagykontroll tanfolyam",
+      "description": "Kétnapos tanfolyam, ahol gyermeked megtanulja az agykontroll alapjait: relaxáció, koncentráció, stresszkezelés, pozitív gondolkodás.",
+      "provider": {
+        "@type": "Person",
+        "name": "Tihanyi Rita"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "42000",
+        "priceCurrency": "HUF",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]}
+>
   <!-- HERO -->
   <Hero
     title="A gyermeked többre képes, mint gondolnád"
-    subtitle="A gyermekagykontroll egy tudományosan megalapozott módszer, amellyel gyermeked megtanulja tudatosan használni a gondolatai erejét. 9-14 éveseknek, Budapesten és a Balaton környékén."
+    subtitle="A gyermekagykontroll egy tudományosan megalapozott módszer, amellyel gyermeked megtanulja tudatosan használni a gondolatai erejét. Általános iskolás korú gyerekeknek, Budapesten és a Balaton környékén."
     image="/images/tanfolyam/nagy-kor.jpg"
     imageAlt="Gyermekagykontroll tanfolyam"
     badge="15+ év tapasztalat · Több mint 500 gyermek"

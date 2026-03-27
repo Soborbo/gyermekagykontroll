@@ -1,10 +1,10 @@
 ---
-import { siteConfig } from "../content/site";
+import { siteConfig, footerLinks } from "../content/site";
 ---
 
 <footer class="bg-primary-800 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       <div>
         <h3 class="text-xl font-extrabold font-heading mb-4">Gyermekagykontroll</h3>
         <p class="text-primary-200 text-sm leading-relaxed">
@@ -35,8 +35,17 @@ import { siteConfig } from "../content/site";
         <ul class="space-y-2 text-primary-200 text-sm">
           <li><a href="/tanulas" class="hover:text-amber-400 transition-colors">Mi az agykontroll?</a></li>
           <li><a href="/gyermekagykontroll" class="hover:text-amber-400 transition-colors">A tanfolyam</a></li>
+          <li><a href="/blog" class="hover:text-amber-400 transition-colors">Blog</a></li>
           <li><a href="/jelentkezes" class="hover:text-amber-400 transition-colors">Jelentkezés</a></li>
-          <li><a href="/aszf" class="hover:text-amber-400 transition-colors">ÁSZF</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold font-heading mb-4">Jogi</h4>
+        <ul class="space-y-2 text-primary-200 text-sm">
+          {footerLinks.map((link) => (
+            <li><a href={link.href} class="hover:text-amber-400 transition-colors">{link.label}</a></li>
+          ))}
         </ul>
       </div>
     </div>

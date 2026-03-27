@@ -28,9 +28,15 @@ export const siteConfig = {
 export const navigation = [
   { label: "Főoldal", href: "/" },
   { label: "Mi az agykontroll?", href: "/tanulas" },
-  { label: "A tanfolyam", href: "/gyermekagykontroll" },
+  { label: "A tanfolyam", href: "/gyermekagykontroll-agykontroll-gyermekeknek" },
+  { label: "Tematika", href: "/gyermekagykontroll-tematika" },
   { label: "Tantorta", href: "/tantorta" },
   { label: "Relaxáció", href: "/relaxacio" },
+  { label: "Blog", href: "/blog" },
   { label: "Rólam", href: "/rolam" },
-  { label: "Jelentkezés", href: "/jelentkezes" },
+] as const;
+
+export const footerLinks = [
+  { label: "ÁSZF", href: "/aszf" },
+  { label: "Adatvédelmi tájékoztató", href: "/adatvedelmi-tajekoztato" },
 ] as const;

@@ -3,204 +3,269 @@ import { courses, discounts } from "../content/courses";
 
 const agykontroll = courses[0];
 const tantorta = courses[1];
+
+const steps = [
+  { label: "Tanfolyam", icon: "1" },
+  { label: "Résztvevő", icon: "2" },
+  { label: "Kedvezmények", icon: "3" },
+  { label: "Kapcsolat", icon: "4" },
+];
 ---
 
-<form id="signup-form" class="max-w-2xl mx-auto space-y-8" novalidate>
-  <!-- Tanfolyam választás -->
-  <div class="bg-surface-alt rounded-2xl p-6 border border-border">
-    <h2 class="text-xl font-bold text-primary-800 mb-4">1. Melyik tanfolyamra szeretne jelentkezni?</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <label class="course-option relative cursor-pointer">
-        <input type="radio" name="courseType" value="gyermekagykontroll" class="peer sr-only" />
-        <div class="border-2 border-border rounded-xl p-4 peer-checked:border-coral-500 peer-checked:bg-coral-50 transition-all hover:border-primary-300">
-          <p class="font-bold text-primary-800">Gyermekagykontroll</p>
-          <p class="text-sm text-text-secondary">2 napos tanfolyam, 9-14 év</p>
-          <p class="text-lg font-bold text-coral-500 mt-1">{agykontroll.priceLabel}</p>
-        </div>
-      </label>
-      <label class="course-option relative cursor-pointer">
-        <input type="radio" name="courseType" value="tantorta" class="peer sr-only" />
-        <div class="border-2 border-border rounded-xl p-4 peer-checked:border-coral-500 peer-checked:bg-coral-50 transition-all hover:border-primary-300">
-          <p class="font-bold text-primary-800">Tantorta tréning</p>
-          <p class="text-sm text-text-secondary">1 napos tréning, 10-18 év</p>
-          <p class="text-lg font-bold text-amber-500 mt-1">{tantorta.priceLabel}</p>
-        </div>
-      </label>
-    </div>
-    <p class="field-error text-red-500 text-sm mt-2 hidden" data-field="courseType"></p>
-  </div>
-
-  <!-- Időpont -->
-  <div class="bg-surface-alt rounded-2xl p-6 border border-border">
-    <h2 class="text-xl font-bold text-primary-800 mb-4">2. Válasszon időpontot</h2>
-    <div id="dates-agykontroll" class="course-dates space-y-2 hidden" data-course="gyermekagykontroll">
-      {agykontroll.dates.map((d, i) => (
-        <label class="flex items-center gap-3 p-3 bg-white rounded-lg border border-border hover:border-primary-300 cursor-pointer transition-colors">
-          <input type="radio" name="courseDate" value={`${d.date} - ${d.location}`} class="w-4 h-4 text-coral-500 focus:ring-coral-500" />
-          <span><strong class="text-primary-700">{d.date}</strong> – {d.location}</span>
-        </label>
+<form id="signup-form" class="max-w-2xl mx-auto" novalidate>
+  <!-- Progress indicator -->
+  <nav class="mb-10" aria-label="Jelentkezési lépések">
+    <ol class="flex items-center justify-between">
+      {steps.map((step, i) => (
+        <li class="flex-1 flex flex-col items-center relative" data-step-indicator={i}>
+          {i > 0 && (
+            <div
+              class="step-connector absolute top-5 -left-1/2 w-full h-0.5 bg-border -z-10 transition-colors duration-300"
+              data-connector={i}
+            />
+          )}
+          <div
+            class:list={[
+              "step-circle w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-2 transition-all duration-300",
+              i === 0
+                ? "border-coral-500 bg-coral-500 text-white"
+                : "border-border bg-white text-text-secondary",
+            ]}
+          >
+            <span class="step-number">{step.icon}</span>
+            <svg class="step-check hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <span
+            class:list={[
+              "step-label text-xs sm:text-sm mt-2 font-medium transition-colors duration-300 text-center",
+              i === 0 ? "text-coral-600" : "text-text-secondary",
+            ]}
+          >
+            {step.label}
+          </span>
+        </li>
       ))}
-    </div>
-    <div id="dates-tantorta" class="course-dates space-y-2 hidden" data-course="tantorta">
-      {tantorta.dates.map((d) => (
-        <label class="flex items-center gap-3 p-3 bg-white rounded-lg border border-border hover:border-primary-300 cursor-pointer transition-colors">
-          <input type="radio" name="courseDate" value={`${d.date} - ${d.location}`} class="w-4 h-4 text-coral-500 focus:ring-coral-500" />
-          <span><strong class="text-primary-700">{d.date}</strong> – {d.location}</span>
+    </ol>
+  </nav>
+
+  <!-- Step 0: Tanfolyam & Időpont -->
+  <div class="step-panel" data-step="0">
+    <div class="bg-surface-alt rounded-2xl p-6 border border-border mb-6">
+      <h2 class="text-xl font-bold text-primary-800 mb-4">Melyik tanfolyamra szeretne jelentkezni?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <label class="course-option relative cursor-pointer">
+          <input type="radio" name="courseType" value="gyermekagykontroll" class="peer sr-only" />
+          <div class="border-2 border-border rounded-xl p-4 peer-checked:border-coral-500 peer-checked:bg-coral-50 transition-all hover:border-primary-300">
+            <p class="font-bold text-primary-800">Gyermekagykontroll</p>
+            <p class="text-sm text-text-secondary">2 napos tanfolyam, 9-14 év</p>
+            <p class="text-lg font-bold text-coral-500 mt-1">{agykontroll.priceLabel}</p>
+          </div>
         </label>
-      ))}
-    </div>
-    <p id="dates-placeholder" class="text-text-secondary italic">Először válasszon tanfolyamot!</p>
-    <p class="field-error text-red-500 text-sm mt-2 hidden" data-field="courseDate"></p>
-  </div>
-
-  <!-- Résztvevő adatai -->
-  <div class="bg-surface-alt rounded-2xl p-6 border border-border">
-    <h2 class="text-xl font-bold text-primary-800 mb-4">3. A résztvevő adatai</h2>
-    <div class="space-y-4">
-      <div>
-        <label for="grade" class="block text-sm font-medium text-text mb-1">Hányadik osztályba jár a résztvevő?</label>
-        <select name="grade" id="grade" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors">
-          <option value="">Kérem, válasszon!</option>
-        </select>
-        <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="grade"></p>
-      </div>
-
-      <div id="parent-attends-field" class="hidden">
-        <label class="block text-sm font-medium text-text mb-1">Az egyik szülő részt kíván venni a tanfolyamon?</label>
-        <div class="flex gap-4">
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="parentAttends" value="nem" class="w-4 h-4 text-coral-500" checked />
-            <span>Nem</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="parentAttends" value="igen" class="w-4 h-4 text-coral-500" />
-            <span>Igen</span>
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label for="childName" class="block text-sm font-medium text-text mb-1">A résztvevő neve</label>
-        <input type="text" name="childName" id="childName" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Teljes név" />
-        <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="childName"></p>
-      </div>
-
-      <div id="success-subject-field" class="hidden">
-        <label for="successSubject" class="block text-sm font-medium text-text mb-1">Milyen tantárgyban, tevékenységben sikeres?</label>
-        <input type="text" name="successSubject" id="successSubject" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="pl. matematika, sport, zene..." />
-      </div>
-
-      <div>
-        <label class="block text-sm font-medium text-text mb-1">A résztvevő különleges figyelmet igényel?</label>
-        <div class="flex gap-4">
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="specialAttention" value="nem" class="w-4 h-4 text-coral-500" checked />
-            <span>Nem</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="specialAttention" value="igen" class="w-4 h-4 text-coral-500" />
-            <span>Igen</span>
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label class="block text-sm font-medium text-text mb-1">Kezelték/kezelik-e pszichiátriai betegséggel?</label>
-        <div class="flex gap-4">
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="psychiatricTreatment" value="nem" class="w-4 h-4 text-coral-500" checked />
-            <span>Nem</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="psychiatricTreatment" value="igen" class="w-4 h-4 text-coral-500" />
-            <span>Igen</span>
-          </label>
-        </div>
-      </div>
-
-      <div id="special-reason-field" class="hidden">
-        <label for="specialAttentionReason" class="block text-sm font-medium text-text mb-1">Miért igényel különleges figyelmet?</label>
-        <textarea name="specialAttentionReason" id="specialAttentionReason" rows="3" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Kérjük, írja le röviden..."></textarea>
-      </div>
-    </div>
-  </div>
-
-  <!-- Kedvezmények -->
-  <div class="bg-surface-alt rounded-2xl p-6 border border-border">
-    <h2 class="text-xl font-bold text-primary-800 mb-4">4. Kedvezmények</h2>
-    <div class="space-y-2">
-      {discounts.map((d) => (
-        <label class:list={["flex items-center gap-3 p-3 bg-white rounded-lg border border-border hover:border-primary-300 cursor-pointer transition-colors", d.id === "agykontroll" && "discount-agykontroll hidden"]}>
-          <input type="radio" name="discount" value={d.id} class="w-4 h-4 text-coral-500" checked={d.id === "none"} />
-          <span>{d.label}</span>
+        <label class="course-option relative cursor-pointer">
+          <input type="radio" name="courseType" value="tantorta" class="peer sr-only" />
+          <div class="border-2 border-border rounded-xl p-4 peer-checked:border-coral-500 peer-checked:bg-coral-50 transition-all hover:border-primary-300">
+            <p class="font-bold text-primary-800">Tantorta tréning</p>
+            <p class="text-sm text-text-secondary">1 napos tréning, 10-18 év</p>
+            <p class="text-lg font-bold text-amber-500 mt-1">{tantorta.priceLabel}</p>
+          </div>
         </label>
-      ))}
+      </div>
+      <p class="field-error text-red-500 text-sm mt-2 hidden" data-field="courseType"></p>
+    </div>
+
+    <div class="bg-surface-alt rounded-2xl p-6 border border-border">
+      <h2 class="text-xl font-bold text-primary-800 mb-4">Válasszon időpontot</h2>
+      <div id="dates-agykontroll" class="course-dates space-y-2 hidden" data-course="gyermekagykontroll">
+        {agykontroll.dates.map((d, i) => (
+          <label class="flex items-center gap-3 p-3 bg-white rounded-lg border border-border hover:border-primary-300 cursor-pointer transition-colors">
+            <input type="radio" name="courseDate" value={`${d.date} - ${d.location}`} class="w-4 h-4 text-coral-500 focus:ring-coral-500" />
+            <span><strong class="text-primary-700">{d.date}</strong> – {d.location}</span>
+          </label>
+        ))}
+      </div>
+      <div id="dates-tantorta" class="course-dates space-y-2 hidden" data-course="tantorta">
+        {tantorta.dates.map((d) => (
+          <label class="flex items-center gap-3 p-3 bg-white rounded-lg border border-border hover:border-primary-300 cursor-pointer transition-colors">
+            <input type="radio" name="courseDate" value={`${d.date} - ${d.location}`} class="w-4 h-4 text-coral-500 focus:ring-coral-500" />
+            <span><strong class="text-primary-700">{d.date}</strong> – {d.location}</span>
+          </label>
+        ))}
+      </div>
+      <p id="dates-placeholder" class="text-text-secondary italic">Először válasszon tanfolyamot!</p>
+      <p class="field-error text-red-500 text-sm mt-2 hidden" data-field="courseDate"></p>
     </div>
   </div>
 
-  <!-- Fénykép hozzájárulás (csak agykontroll) -->
-  <div id="photo-consent-field" class="bg-surface-alt rounded-2xl p-6 border border-border hidden">
-    <h2 class="text-xl font-bold text-primary-800 mb-4">5. Fénykép hozzájárulás</h2>
-    <p class="text-text-secondary mb-3">Hozzájárul-e a képzésen készült fotók, videófelvételek közzétételéhez?</p>
-    <div class="flex gap-4">
-      <label class="flex items-center gap-2 cursor-pointer">
-        <input type="radio" name="photoConsent" value="igen" class="w-4 h-4 text-coral-500" checked />
-        <span>Igen</span>
-      </label>
-      <label class="flex items-center gap-2 cursor-pointer">
-        <input type="radio" name="photoConsent" value="nem" class="w-4 h-4 text-coral-500" />
-        <span>Nem</span>
-      </label>
+  <!-- Step 1: Résztvevő adatai -->
+  <div class="step-panel hidden" data-step="1">
+    <div class="bg-surface-alt rounded-2xl p-6 border border-border">
+      <h2 class="text-xl font-bold text-primary-800 mb-4">A résztvevő adatai</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="grade" class="block text-sm font-medium text-text mb-1">Hányadik osztályba jár a résztvevő?</label>
+          <select name="grade" id="grade" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors">
+            <option value="">Kérem, válasszon!</option>
+          </select>
+          <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="grade"></p>
+        </div>
+
+        <div id="parent-attends-field" class="hidden">
+          <label class="block text-sm font-medium text-text mb-1">Az egyik szülő részt kíván venni a tanfolyamon?</label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="parentAttends" value="nem" class="w-4 h-4 text-coral-500" checked />
+              <span>Nem</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="parentAttends" value="igen" class="w-4 h-4 text-coral-500" />
+              <span>Igen</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="childName" class="block text-sm font-medium text-text mb-1">A résztvevő neve</label>
+          <input type="text" name="childName" id="childName" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Teljes név" />
+          <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="childName"></p>
+        </div>
+
+        <div id="success-subject-field" class="hidden">
+          <label for="successSubject" class="block text-sm font-medium text-text mb-1">Milyen tantárgyban, tevékenységben sikeres?</label>
+          <input type="text" name="successSubject" id="successSubject" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="pl. matematika, sport, zene..." />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-text mb-1">A résztvevő különleges figyelmet igényel?</label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="specialAttention" value="nem" class="w-4 h-4 text-coral-500" checked />
+              <span>Nem</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="specialAttention" value="igen" class="w-4 h-4 text-coral-500" />
+              <span>Igen</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-text mb-1">Kezelték/kezelik-e pszichiátriai betegséggel?</label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="psychiatricTreatment" value="nem" class="w-4 h-4 text-coral-500" checked />
+              <span>Nem</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="psychiatricTreatment" value="igen" class="w-4 h-4 text-coral-500" />
+              <span>Igen</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="special-reason-field" class="hidden">
+          <label for="specialAttentionReason" class="block text-sm font-medium text-text mb-1">Miért igényel különleges figyelmet?</label>
+          <textarea name="specialAttentionReason" id="specialAttentionReason" rows="3" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Kérjük, írja le röviden..."></textarea>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Szülő adatai -->
-  <div class="bg-surface-alt rounded-2xl p-6 border border-border">
-    <h2 class="text-xl font-bold text-primary-800 mb-4">
-      <span id="contact-section-number">5</span>. Az Ön adatai (szülő/gondviselő)
-    </h2>
-    <div class="space-y-4">
-      <div>
-        <label for="parentName" class="block text-sm font-medium text-text mb-1">Név</label>
-        <input type="text" name="parentName" id="parentName" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Teljes név" />
-        <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="parentName"></p>
+  <!-- Step 2: Kedvezmények & Fénykép -->
+  <div class="step-panel hidden" data-step="2">
+    <div class="bg-surface-alt rounded-2xl p-6 border border-border mb-6">
+      <h2 class="text-xl font-bold text-primary-800 mb-4">Kedvezmények</h2>
+      <div class="space-y-2">
+        {discounts.map((d) => (
+          <label class:list={["flex items-center gap-3 p-3 bg-white rounded-lg border border-border hover:border-primary-300 cursor-pointer transition-colors", d.id === "agykontroll" && "discount-agykontroll hidden"]}>
+            <input type="radio" name="discount" value={d.id} class="w-4 h-4 text-coral-500" checked={d.id === "none"} />
+            <span>{d.label}</span>
+          </label>
+        ))}
       </div>
-      <div>
-        <label for="parentEmail" class="block text-sm font-medium text-text mb-1">Email</label>
-        <input type="email" name="parentEmail" id="parentEmail" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="pelda@email.hu" />
-        <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="parentEmail"></p>
-      </div>
-      <div>
-        <label for="parentPhone" class="block text-sm font-medium text-text mb-1">Telefonszám</label>
-        <input type="tel" name="parentPhone" id="parentPhone" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="+36 30 123 4567" />
-        <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="parentPhone"></p>
-      </div>
-      <div>
-        <label for="message" class="block text-sm font-medium text-text mb-1">Üzenet (opcionális)</label>
-        <textarea name="message" id="message" rows="3" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Bármilyen kérdés vagy megjegyzés..."></textarea>
+    </div>
+
+    <div id="photo-consent-field" class="bg-surface-alt rounded-2xl p-6 border border-border hidden">
+      <h2 class="text-xl font-bold text-primary-800 mb-4">Fénykép hozzájárulás</h2>
+      <p class="text-text-secondary mb-3">Hozzájárul-e a képzésen készült fotók, videófelvételek közzétételéhez?</p>
+      <div class="flex gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="radio" name="photoConsent" value="igen" class="w-4 h-4 text-coral-500" checked />
+          <span>Igen</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="radio" name="photoConsent" value="nem" class="w-4 h-4 text-coral-500" />
+          <span>Nem</span>
+        </label>
       </div>
     </div>
   </div>
 
-  <!-- Info -->
-  <div class="bg-green-50 border border-green-100 rounded-2xl p-6 text-center">
-    <p class="text-green-600 font-medium">
-      A jelentkezés nem kötelező érvényű – nincs szükség fizetésre a jelentkezéshez.
-      Részletes tájékoztatót küldünk emailben, és 24 órán belül visszajelzünk telefonon is.
-    </p>
+  <!-- Step 3: Szülő adatai -->
+  <div class="step-panel hidden" data-step="3">
+    <div class="bg-surface-alt rounded-2xl p-6 border border-border mb-6">
+      <h2 class="text-xl font-bold text-primary-800 mb-4">Az Ön adatai (szülő/gondviselő)</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="parentName" class="block text-sm font-medium text-text mb-1">Név</label>
+          <input type="text" name="parentName" id="parentName" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Teljes név" />
+          <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="parentName"></p>
+        </div>
+        <div>
+          <label for="parentEmail" class="block text-sm font-medium text-text mb-1">Email</label>
+          <input type="email" name="parentEmail" id="parentEmail" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="pelda@email.hu" />
+          <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="parentEmail"></p>
+        </div>
+        <div>
+          <label for="parentPhone" class="block text-sm font-medium text-text mb-1">Telefonszám</label>
+          <input type="tel" name="parentPhone" id="parentPhone" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="+36 30 123 4567" />
+          <p class="field-error text-red-500 text-sm mt-1 hidden" data-field="parentPhone"></p>
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-text mb-1">Üzenet (opcionális)</label>
+          <textarea name="message" id="message" rows="3" class="w-full px-4 py-3 rounded-xl border border-border bg-white focus:ring-2 focus:ring-coral-500 focus:border-coral-500 transition-colors" placeholder="Bármilyen kérdés vagy megjegyzés..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="bg-green-50 border border-green-100 rounded-2xl p-6 text-center">
+      <p class="text-green-600 font-medium">
+        A jelentkezés nem kötelező érvényű – nincs szükség fizetésre a jelentkezéshez.
+        Részletes tájékoztatót küldünk emailben, és 24 órán belül visszajelzünk telefonon is.
+      </p>
+    </div>
   </div>
 
-  <!-- Submit -->
-  <button
-    type="submit"
-    id="submit-btn"
-    class="w-full px-8 py-4 bg-coral-500 hover:bg-coral-600 text-white font-bold rounded-xl text-lg transition-all hover:scale-[1.02] shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-  >
-    Jelentkezem!
-  </button>
+  <!-- Navigation buttons -->
+  <div class="flex items-center justify-between mt-8 gap-4">
+    <button
+      type="button"
+      id="prev-btn"
+      class="hidden px-6 py-3 border-2 border-primary-300 text-primary-700 font-semibold rounded-xl hover:bg-primary-50 transition-all"
+    >
+      Vissza
+    </button>
+    <div class="flex-1"></div>
+    <button
+      type="button"
+      id="next-btn"
+      class="px-8 py-3 bg-coral-500 hover:bg-coral-600 text-white font-bold rounded-xl text-lg transition-all hover:scale-[1.02] shadow-lg"
+    >
+      Tovább
+    </button>
+    <button
+      type="submit"
+      id="submit-btn"
+      class="hidden px-8 py-4 bg-coral-500 hover:bg-coral-600 text-white font-bold rounded-xl text-lg transition-all hover:scale-[1.02] shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+    >
+      Jelentkezem!
+    </button>
+  </div>
 
   <!-- Success message -->
-  <div id="success-message" class="hidden bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
+  <div id="success-message" class="hidden bg-green-50 border border-green-200 rounded-2xl p-8 text-center mt-8">
     <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
@@ -209,7 +274,7 @@ const tantorta = courses[1];
   </div>
 
   <!-- Error message -->
-  <div id="error-message" class="hidden bg-red-50 border border-red-200 rounded-2xl p-6 text-center">
+  <div id="error-message" class="hidden bg-red-50 border border-red-200 rounded-2xl p-6 text-center mt-4">
     <p class="text-red-600 font-medium">Hiba történt az elküldés során. Kérjük, próbálja újra, vagy hívjon minket: +36 30 620 7373</p>
   </div>
 </form>
@@ -217,8 +282,14 @@ const tantorta = courses[1];
 <script>
   const form = document.getElementById("signup-form") as HTMLFormElement;
   const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+  const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
   const successMsg = document.getElementById("success-message") as HTMLElement;
   const errorMsg = document.getElementById("error-message") as HTMLElement;
+  const panels = document.querySelectorAll<HTMLElement>(".step-panel");
+  const totalSteps = panels.length;
+
+  let currentStep = 0;
 
   // Course type data
   const courseData: Record<string, { grades: string[]; showParent: boolean; showSuccess: boolean; showPhoto: boolean }> = {
@@ -284,10 +355,6 @@ const tantorta = courses[1];
     document.querySelectorAll(".discount-agykontroll").forEach((el) => {
       (el as HTMLElement).classList.toggle("hidden", courseType !== "tantorta");
     });
-
-    // Update section numbers
-    const contactNum = document.getElementById("contact-section-number");
-    if (contactNum) contactNum.textContent = data.showPhoto ? "6" : "5";
   }
 
   // Special attention toggle
@@ -303,28 +370,138 @@ const tantorta = courses[1];
     document.getElementById(id)?.classList.toggle("hidden", !show);
   }
 
+  // --- Step navigation ---
+
+  function updateStepUI() {
+    // Show/hide panels with animation
+    panels.forEach((panel, i) => {
+      if (i === currentStep) {
+        panel.classList.remove("hidden");
+        panel.style.animation = "stepFadeIn 0.3s ease-out";
+      } else {
+        panel.classList.add("hidden");
+      }
+    });
+
+    // Update progress indicators
+    document.querySelectorAll<HTMLElement>("[data-step-indicator]").forEach((indicator, i) => {
+      const circle = indicator.querySelector(".step-circle") as HTMLElement;
+      const label = indicator.querySelector(".step-label") as HTMLElement;
+      const numberEl = indicator.querySelector(".step-number") as HTMLElement;
+      const checkEl = indicator.querySelector(".step-check") as HTMLElement;
+
+      if (i < currentStep) {
+        // Completed
+        circle.className = "step-circle w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-2 transition-all duration-300 border-green-500 bg-green-500 text-white";
+        label.className = "step-label text-xs sm:text-sm mt-2 font-medium transition-colors duration-300 text-center text-green-600";
+        numberEl.classList.add("hidden");
+        checkEl.classList.remove("hidden");
+      } else if (i === currentStep) {
+        // Active
+        circle.className = "step-circle w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-2 transition-all duration-300 border-coral-500 bg-coral-500 text-white";
+        label.className = "step-label text-xs sm:text-sm mt-2 font-medium transition-colors duration-300 text-center text-coral-600";
+        numberEl.classList.remove("hidden");
+        checkEl.classList.add("hidden");
+      } else {
+        // Upcoming
+        circle.className = "step-circle w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-2 transition-all duration-300 border-border bg-white text-text-secondary";
+        label.className = "step-label text-xs sm:text-sm mt-2 font-medium transition-colors duration-300 text-center text-text-secondary";
+        numberEl.classList.remove("hidden");
+        checkEl.classList.add("hidden");
+      }
+    });
+
+    // Update connectors
+    document.querySelectorAll<HTMLElement>("[data-connector]").forEach((connector, i) => {
+      const stepIndex = parseInt(connector.dataset.connector || "0");
+      if (stepIndex <= currentStep) {
+        connector.className = connector.className.replace("bg-border", "bg-green-500");
+        if (!connector.className.includes("bg-green-500")) {
+          connector.classList.remove("bg-border");
+          connector.classList.add("bg-green-500");
+        }
+      } else {
+        connector.className = connector.className.replace("bg-green-500", "bg-border");
+        if (!connector.className.includes("bg-border")) {
+          connector.classList.remove("bg-green-500");
+          connector.classList.add("bg-border");
+        }
+      }
+    });
+
+    // Show/hide nav buttons
+    prevBtn.classList.toggle("hidden", currentStep === 0);
+    nextBtn.classList.toggle("hidden", currentStep === totalSteps - 1);
+    submitBtn.classList.toggle("hidden", currentStep !== totalSteps - 1);
+
+    // Scroll to top of form
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function validateCurrentStep(): boolean {
+    clearErrors();
+    const errors: Record<string, string> = {};
+
+    if (currentStep === 0) {
+      const formData = new FormData(form);
+      if (!formData.get("courseType")) errors.courseType = "Kérjük, válasszon tanfolyamot!";
+      if (!formData.get("courseDate")) errors.courseDate = "Kérjük, válasszon időpontot!";
+    } else if (currentStep === 1) {
+      const formData = new FormData(form);
+      if (!formData.get("grade")) errors.grade = "Kérjük, válasszon osztályt!";
+      const childName = formData.get("childName") as string;
+      if (!childName || childName.length < 2) errors.childName = "Kérjük, adja meg a résztvevő nevét!";
+    } else if (currentStep === 3) {
+      const formData = new FormData(form);
+      const parentName = formData.get("parentName") as string;
+      if (!parentName || parentName.length < 2) errors.parentName = "Kérjük, adja meg a nevét!";
+      const parentEmail = formData.get("parentEmail") as string;
+      if (!parentEmail || !parentEmail.includes("@")) errors.parentEmail = "Kérjük, adjon meg érvényes email címet!";
+      const parentPhone = formData.get("parentPhone") as string;
+      if (!parentPhone || parentPhone.length < 6) errors.parentPhone = "Kérjük, adjon meg érvényes telefonszámot!";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      showErrors(errors);
+      return false;
+    }
+    return true;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (validateCurrentStep() && currentStep < totalSteps - 1) {
+      currentStep++;
+      updateStepUI();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      updateStepUI();
+    }
+  });
+
+  // Allow clicking on completed step indicators to navigate back
+  document.querySelectorAll<HTMLElement>("[data-step-indicator]").forEach((indicator, i) => {
+    indicator.style.cursor = "pointer";
+    indicator.addEventListener("click", () => {
+      if (i < currentStep) {
+        currentStep = i;
+        updateStepUI();
+      }
+    });
+  });
+
   // Form submission
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!validateCurrentStep()) return;
+
     clearErrors();
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-
-    // Basic client-side validation
-    const errors: Record<string, string> = {};
-    if (!data.courseType) errors.courseType = "Kérjük, válasszon tanfolyamot!";
-    if (!data.courseDate) errors.courseDate = "Kérjük, válasszon időpontot!";
-    if (!data.grade) errors.grade = "Kérjük, válasszon osztályt!";
-    if (!data.childName || (data.childName as string).length < 2) errors.childName = "Kérjük, adja meg a résztvevő nevét!";
-    if (!data.parentName || (data.parentName as string).length < 2) errors.parentName = "Kérjük, adja meg a nevét!";
-    if (!data.parentEmail || !(data.parentEmail as string).includes("@")) errors.parentEmail = "Kérjük, adjon meg érvényes email címet!";
-    if (!data.parentPhone || (data.parentPhone as string).length < 6) errors.parentPhone = "Kérjük, adjon meg érvényes telefonszámot!";
-
-    if (Object.keys(errors).length > 0) {
-      showErrors(errors);
-      return;
-    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Küldés...";
@@ -337,7 +514,10 @@ const tantorta = courses[1];
       });
 
       if (res.ok) {
-        form.classList.add("hidden");
+        // Hide everything except success
+        panels.forEach((p) => p.classList.add("hidden"));
+        document.querySelector("nav[aria-label]")?.classList.add("hidden");
+        (document.querySelector(".flex.items-center.justify-between.mt-8") as HTMLElement)?.classList.add("hidden");
         successMsg.classList.remove("hidden");
         window.scrollTo({ top: successMsg.offsetTop - 100, behavior: "smooth" });
       } else {
@@ -369,10 +549,22 @@ const tantorta = courses[1];
         el.classList.remove("hidden");
       }
     }
-    // Scroll to first error
     const firstError = document.querySelector(".field-error:not(.hidden)");
     if (firstError) {
       firstError.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 </script>
+
+<style>
+  @keyframes stepFadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

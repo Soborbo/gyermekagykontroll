@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import { siteConfig } from "../content/site";
+---
+
+<Layout title="Adatvédelmi tájékoztató" description="A gyermekagykontroll.hu adatvédelmi tájékoztatója a személyes adatok kezeléséről.">
+  <Section title="Adatvédelmi tájékoztató">
+    <div class="max-w-3xl mx-auto prose prose-lg prose-primary">
+      <p>
+        Jelen adatvédelmi tájékoztató célja, hogy a <strong>{siteConfig.url}</strong> weboldal látogatóit és felhasználóit
+        tájékoztassa a személyes adatok kezelésével kapcsolatos gyakorlatról az Európai Parlament és a Tanács (EU) 2016/679
+        számú általános adatvédelmi rendelete (GDPR), valamint az információs önrendelkezési jogról és az
+        információszabadságról szóló 2011. évi CXII. törvény alapján.
+      </p>
+
+      <h3>1. Az adatkezelő adatai</h3>
+      <ul>
+        <li><strong>Név:</strong> {siteConfig.business.name}</li>
+        <li><strong>Székhely:</strong> {siteConfig.contact.address}</li>
+        <li><strong>Adószám:</strong> {siteConfig.business.taxNumber}</li>
+        <li><strong>Telefon:</strong> {siteConfig.contact.phone}</li>
+        <li><strong>Email:</strong> {siteConfig.contact.email}</li>
+      </ul>
+
+      <h3>2. A kezelt személyes adatok köre</h3>
+      <p>A weboldalon a következő személyes adatokat kezelhetjük:</p>
+      <ul>
+        <li><strong>Jelentkezési űrlap:</strong> név, e-mail cím, telefonszám, a gyermek neve és életkora, üzenet.</li>
+        <li><strong>Kapcsolatfelvétel:</strong> név, e-mail cím, telefonszám.</li>
+        <li><strong>Technikai adatok:</strong> IP-cím, böngésző típusa, látogatás időpontja (naplófájlok).</li>
+      </ul>
+
+      <h3>3. Az adatkezelés célja és jogalapja</h3>
+      <ul>
+        <li><strong>Jelentkezés kezelése:</strong> a tanfolyamra való jelentkezés feldolgozása, kapcsolattartás. Jogalap: az érintett hozzájárulása (GDPR 6. cikk (1) a)).</li>
+        <li><strong>Szerződés teljesítése:</strong> a tanfolyami szolgáltatás nyújtása. Jogalap: szerződés teljesítése (GDPR 6. cikk (1) b)).</li>
+        <li><strong>Technikai működés:</strong> a weboldal biztonságos és zavartalan működésének biztosítása. Jogalap: jogos érdek (GDPR 6. cikk (1) f)).</li>
+      </ul>
+
+      <h3>4. Az adatkezelés időtartama</h3>
+      <ul>
+        <li>Jelentkezési adatok: a tanfolyam befejezését követő 5 évig, vagy a hozzájárulás visszavonásáig.</li>
+        <li>Számlázási adatok: a számviteli törvény szerinti 8 évig.</li>
+        <li>Technikai adatok: legfeljebb 30 napig.</li>
+      </ul>
+
+      <h3>5. Adattovábbítás</h3>
+      <p>Az adatkezelő a személyes adatokat harmadik fél részére nem továbbítja, kivéve:</p>
+      <ul>
+        <li>Jogszabályi kötelezettség esetén (pl. hatóságok felé).</li>
+        <li>Az adatfeldolgozók részére, akik az adatkezelő utasításai szerint járnak el (pl. tárhelyszolgáltató, e-mail szolgáltató).</li>
+      </ul>
+
+      <h3>6. Cookie-k (sütik)</h3>
+      <p>A weboldal a működéshez szükséges technikai sütiket használhat. Ezek a sütik a weboldal alapvető funkcionalitásának biztosításához szükségesek. Analitikai vagy marketing célú sütiket nem alkalmazunk.</p>
+
+      <h3>7. Az érintettek jogai</h3>
+      <p>Ön a személyes adatainak kezelésével kapcsolatban az alábbi jogokkal élhet:</p>
+      <ul>
+        <li><strong>Hozzáférés joga:</strong> tájékoztatást kérhet a kezelt adatokról.</li>
+        <li><strong>Helyesbítés joga:</strong> kérheti a pontatlan adatok kijavítását.</li>
+        <li><strong>Törlés joga:</strong> kérheti adatai törlését („elfeledtetéshez való jog").</li>
+        <li><strong>Adathordozhatóság joga:</strong> kérheti adatai géppel olvasható formátumban történő kiadását.</li>
+        <li><strong>Tiltakozás joga:</strong> tiltakozhat a jogos érdeken alapuló adatkezelés ellen.</li>
+        <li><strong>Hozzájárulás visszavonása:</strong> bármikor visszavonhatja korábbi hozzájárulását.</li>
+      </ul>
+      <p>Jogai gyakorlásához kérjük, forduljon hozzánk a <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a> e-mail címen.</p>
+
+      <h3>8. Jogorvoslati lehetőségek</h3>
+      <p>Amennyiben úgy érzi, hogy személyes adatainak kezelésével kapcsolatban jogsérelem érte, panaszával fordulhat:</p>
+      <ul>
+        <li><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br />Cím: 1055 Budapest, Falk Miksa u. 9-11.<br />Telefon: +36 1 391 1400<br />E-mail: ugyfelszolgalat@naih.hu</li>
+        <li>Továbbá bírósághoz fordulhat az Info tv. 22. § alapján.</li>
+      </ul>
+
+      <h3>9. A tájékoztató módosítása</h3>
+      <p>Az adatkezelő fenntartja a jogot, hogy jelen tájékoztatót egyoldalúan módosítsa. A módosított tájékoztató a weboldalon történő közzététellel lép hatályba.</p>
+
+      <p><em>Utolsó módosítás: 2026. március 27.</em></p>
+    </div>
+  </Section>
+</Layout>

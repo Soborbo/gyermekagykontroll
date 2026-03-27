@@ -71,61 +71,73 @@ export const benefits = [
     icon: "book",
     title: "Jobb tanulás",
     text: "Jobban tanulnak, javul a memóriájuk, sikeresebbek lesznek az iskolában és így később az életben is.",
+    color: "blue",
   },
   {
     icon: "shield",
     title: "Stresszkezelés",
     text: "Hatékony módszereket tanítok a stressz kezelésére, amellyel leküzdhetik a lámpalázat feleléskor.",
+    color: "green",
   },
   {
     icon: "moon",
     title: "Könnyebb alvás",
     text: "Megtanulják, hogyan aludjanak el és keljenek fel könnyebben, akár ébresztőóra nélkül.",
+    color: "indigo",
   },
   {
     icon: "cloud",
     title: "Rossz álmok kezelése",
     text: "Módszert kapnak, hogy kezelni tudják a rossz álmaikat, segítsék a minőségi alvásukat.",
+    color: "purple",
   },
   {
     icon: "brain",
     title: "IQ fejlesztés",
     text: "Az IQ nem egy veleszületett tulajdonság - fejleszthető! Gyorsabb és jobb felfogóképességre tehetnek szert.",
+    color: "amber",
   },
   {
     icon: "x-circle",
     title: "Rossz szokások",
     text: "Segít elhagyni a rossz szokásaikat (pl.: körömrágás, csámcsogás stb.).",
+    color: "rose",
   },
   {
     icon: "target",
     title: "Jobb koncentráció",
     text: "Eszközt kapnak a figyelem-problémáik legyőzésére, jobban fognak tudni koncentrálni.",
+    color: "teal",
   },
   {
     icon: "zap",
     title: "Gyors döntések",
     text: "Már ilyen fiatalon megtanulják, hogyan hozzanak gyors és jó döntéseket.",
+    color: "orange",
   },
   {
     icon: "flag",
     title: "Célkitűzés",
     text: "Megtanulják a helyes célkitűzések fontosságát és eszközt, hogy el is érjék céljaikat.",
+    color: "cyan",
   },
   {
     icon: "heart",
     title: "Fájdalomkezelés",
     text: "Megtanulják kezelni a fájdalmat, elállítani a vérzéseket.",
+    color: "pink",
   },
   {
     icon: "plus-circle",
     title: "Öngyógyítás",
     text: "Hatékony módszert kapnak az öngyógyításra, megbetegedéseik kezelésére gyógyszerek nélkül.",
+    color: "emerald",
   },
   {
     icon: "sun",
     title: "Pozitív gondolkodás",
     text: "Megértik, mi az és miért fontos a pozitív gondolkodás. Megtanulják letenni a negatív gondolatokat és építő, pozitív gondolatokra cserélni azokat.",
+    color: "yellow",
   },
 ] as const;
 

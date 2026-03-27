@@ -15,7 +15,7 @@ const tantorta = courses[1];
 <Layout>
   <!-- HERO -->
   <Hero
-    title="Adj esélyt a gyermekednek, hogy a legjobb verzióját élje!"
+    title="A gyermeked többre képes, mint gondolnád"
     subtitle="A gyermekagykontroll egy tudományosan megalapozott módszer, amellyel gyermeked megtanulja tudatosan használni a gondolatai erejét. 9-14 éveseknek, Budapesten és a Balaton környékén."
     image="/images/tanfolyam/nagy-kor.jpg"
     imageAlt="Gyermekagykontroll tanfolyam"
@@ -112,7 +112,7 @@ const tantorta = courses[1];
   >
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {benefits.map((b) => (
-        <BenefitCard icon={b.icon} title={b.title} text={b.text} />
+        <BenefitCard icon={b.icon} title={b.title} text={b.text} color={b.color} />
       ))}
     </div>
     <div class="text-center mt-12">

@@ -10,6 +10,41 @@ import { siteConfig } from "../content/site";
 
 const agykontroll = courses[0];
 const tantorta = courses[1];
+
+const faqs = [
+  {
+    question: "Az agykontroll milyen valláshoz kapcsolódik?",
+    answer: "Semelyikhez. Az agykontrollnak semmi köze szcientológiához, buddhizmushoz vagy bármilyen valláshoz. Pontosan arról szól, amit a neve is mond: az agy kontrollját, jobb irányítását célzó, tudományosan megalapozott módszer."
+  },
+  {
+    question: "Nem korai ez egy gyereknek? Meg tudják tanulni ilyen fiatalon?",
+    answer: "Ha a citromot el tudja képzelni, mást is el tud képzelni, tud dolgozni a tudatával. Ez nem életkorhoz kötött. Az agykontrollt José Silva eredetileg pont a lányán fedezte fel. Két korcsoportban oktatunk: 8–10 éveseknek és 10–14 éveseknek."
+  },
+  {
+    question: "Hogyan lehet a tanfolyamra jelentkezni?",
+    answer: "A weboldalunkon a Jelentkezés menüpont alatt lehet regisztrálni a résztvevő legfontosabb személyes adatainak megadásával. A tanfolyam díját a jelentkezési lap elküldése után, készpénzben a helyszínen vagy átutalással kérjük kiegyenlíteni."
+  },
+  {
+    question: "Mi a tanfolyamok napirendje?",
+    answer: "Általában 8:40 és 9 óra között kell a helyszínre érkezni. Van egy hosszabb ebédszünet, amikor a gyerekekkel levegőzünk, sétálunk, mozgunk. A tanfolyam időtartama: 1. nap 9:00–16:00, 2. nap 9:00–15:30. Az oktatás játékosan, mesékkel, zenével, relaxálással egybekötve folyik."
+  },
+  {
+    question: "Nem fáradnak el nagyon a gyerekek az egész napos tanfolyamon?",
+    answer: "Nem. A tanfolyamokon nagyon sok érdekes, hasznos dolgot hallanak, tanulnak. Az oktatás játékosan, mesékkel, zenével, relaxálással egybekötve folyik – az életkornak megfelelően. Az oktatási szakaszok között szüneteket tartunk."
+  },
+  {
+    question: "Hogyan érvényesül a testvérkedvezmény?",
+    answer: "A testvérkedvezmény személyenként értendő, vagyis minden testvér egyenként kap kedvezményt a tanfolyam árából."
+  },
+  {
+    question: "Mire jó az agykontroll-igazolvány?",
+    answer: "Az agykontroll-igazolvánnyal a későbbiekben kedvezményes áron végezheti el a felnőtt-tanfolyamot. Ezért fontos, hogy minden tanfolyamra érkező gyerek hozzon magával egy igazolványképet."
+  },
+  {
+    question: "Mire jó az agykontroll gyermekkorban?",
+    answer: "Rendkívül széles körben alkalmazható: a gyerekek eszközt kapnak a rossz szokásaik leküzdéséhez, jobban alszanak, megtanulnak koncentrálni, legyőzni a lámpalázat és a stresszt, gyors döntéseket hozni és megfelelő célokat kitűzni."
+  },
+];
 ---
 
 <Layout
@@ -53,6 +88,18 @@ const tantorta = courses[1];
         "priceCurrency": "HUF",
         "availability": "https://schema.org/InStock"
       }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
     }
   ]}
 >
@@ -254,7 +301,7 @@ const tantorta = courses[1];
       </div>
     </div>
     <p class="text-center text-sm text-text-secondary mt-6">
-      A jelentkezés nem kötelező érvényű – részletes tájékoztatót küldünk emailben, és visszajelzünk telefonon.
+      Részletes tájékoztatót küldünk emailben, és visszajelzünk telefonon.
     </p>
   </Section>
 
@@ -324,13 +371,31 @@ const tantorta = courses[1];
     </div>
   </Section>
 
+  <!-- GYIK -->
+  <Section id="gyik" title="Gyakran ismételt kérdések">
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqs.map((faq) => (
+        <details class="group bg-white rounded-xl border border-border shadow-sm">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-semibold text-primary-800 text-lg select-none">
+            {faq.question}
+            <svg class="w-5 h-5 shrink-0 text-primary-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-text-secondary leading-relaxed">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </Section>
+
   <!-- CTA -->
   <section class="bg-primary-700 text-white py-16 lg:py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl lg:text-4xl font-extrabold mb-6">Érdekli a gyermekagykontroll?</h2>
       <p class="text-lg text-primary-100 mb-8 max-w-2xl mx-auto">
-        Jelentkezzen, és részletes tájékoztatót küldünk emailben. A jelentkezés nem kötelező érvényű
-        – nincs szükség fizetésre, visszajelzünk telefonon is.
+        Jelentkezzen, és részletes tájékoztatót küldünk emailben – visszajelzünk telefonon is.
       </p>
       <a
         href="/jelentkezes"

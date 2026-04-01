@@ -232,7 +232,6 @@ const steps = [
     <!-- Info -->
     <div class="bg-green-50 border border-green-100 rounded-2xl p-6 text-center">
       <p class="text-green-600 font-medium">
-        A jelentkezés nem kötelező érvényű – nincs szükség fizetésre a jelentkezéshez.
         Részletes tájékoztatót küldünk emailben, és 24 órán belül visszajelzünk telefonon is.
       </p>
     </div>
@@ -271,6 +270,7 @@ const steps = [
     </svg>
     <h3 class="text-2xl font-bold text-green-700 mb-2">Köszönjük a jelentkezést!</h3>
     <p class="text-green-600">Hamarosan visszajelzünk emailben és telefonon!</p>
+    <p id="email-warning" class="hidden text-amber-600 mt-3 text-sm font-medium"></p>
   </div>
 
   <!-- Error message -->
@@ -514,11 +514,20 @@ const steps = [
       });
 
       if (res.ok) {
+        const resData = await res.json().catch(() => ({}));
         // Hide everything except success
         panels.forEach((p) => p.classList.add("hidden"));
         document.querySelector("nav[aria-label]")?.classList.add("hidden");
         (document.querySelector(".flex.items-center.justify-between.mt-8") as HTMLElement)?.classList.add("hidden");
         successMsg.classList.remove("hidden");
+        // Show warning if email sending had issues
+        if (resData.emailWarning || resData.warning) {
+          const warningEl = document.getElementById("email-warning");
+          if (warningEl) {
+            warningEl.textContent = resData.emailWarning || resData.warning;
+            warningEl.classList.remove("hidden");
+          }
+        }
         window.scrollTo({ top: successMsg.offsetTop - 100, behavior: "smooth" });
       } else {
         const err = await res.json().catch(() => ({}));

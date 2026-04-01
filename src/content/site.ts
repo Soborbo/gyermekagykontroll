@@ -31,6 +31,7 @@ export const navigation = [
   { label: "A tanfolyam", href: "/gyermekagykontroll-agykontroll-gyermekeknek" },
   { label: "Tematika", href: "/gyermekagykontroll-tematika" },
   { label: "Tantorta", href: "/tantorta" },
+  { label: "GYIK", href: "/#gyik" },
   { label: "Blog", href: "/blog" },
   { label: "Rólam", href: "/rolam" },
 ] as const;

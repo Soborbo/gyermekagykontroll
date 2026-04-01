@@ -91,7 +91,7 @@ export const POST: APIRoute = async ({ request }) => {
       <p>Ha bármilyen kérdése van, forduljon hozzánk bizalommal:</p>
       <ul>
         <li>Telefon: +36 30 620 7373</li>
-        <li>Email: info@gyermekagykontroll.hu</li>
+        <li>Email: hello@gyermekagykontroll.hu</li>
       </ul>
       <p>Üdvözlettel,<br/>Tihanyi Rita<br/>Gyermekagykontroll oktató</p>
     `;
@@ -114,7 +114,7 @@ export const POST: APIRoute = async ({ request }) => {
     try {
       await resend.emails.send({
         from: "Gyermekagykontroll <noreply@gyermekagykontroll.hu>",
-        to: "info@gyermekagykontroll.hu",
+        to: "hello@gyermekagykontroll.hu",
         subject: `Új jelentkezés: ${safe.childName} - ${courseName}`,
         html: emailHtml,
         replyTo: data.parentEmail,

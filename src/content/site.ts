@@ -5,7 +5,7 @@ export const siteConfig = {
   url: "https://gyermekagykontroll.hu",
   contact: {
     phone: "+36 30 620 7373",
-    email: "info@gyermekagykontroll.hu",
+    email: "hello@gyermekagykontroll.hu",
     address: "8360 Keszthely, Ruszek u. 22.",
   },
   social: {

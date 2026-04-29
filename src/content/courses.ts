@@ -38,6 +38,12 @@ export const courses: Course[] = [
       { date: "2026. április 4-5.", location: "Budapest VI. kerület" },
       { date: "2026. május 16-17.", location: "Tapolca" },
       { date: "2026. június 27-28.", location: "Budapest VI. kerület" },
+      { date: "2026. július 25-26.", location: "Budapest VI. kerület" },
+      { date: "2026. augusztus 8-9.", location: "Keszthely" },
+      { date: "2026. augusztus 29-30.", location: "Budapest VI. kerület" },
+      { date: "2026. szeptember 19-20.", location: "Budapest VI. kerület" },
+      { date: "2026. október 17-18.", location: "Budapest VI. kerület" },
+      { date: "2026. november 7-8.", location: "Keszthely" },
     ],
     grades: [
       "1. osztályos", "2. osztályos", "3. osztályos", "4. osztályos",
@@ -58,6 +64,7 @@ export const courses: Course[] = [
     duration: "1 nap",
     dates: [
       { date: "2026. április 25.", location: "Zalaegerszeg" },
+      { date: "2026. október 3.", location: "Keszthely" },
     ],
     grades: [
       "5. osztályos", "6. osztályos", "7. osztályos", "8. osztályos",

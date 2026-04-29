@@ -35,7 +35,6 @@ export const courses: Course[] = [
     ageRange: "Általános iskolás korú gyerekeknek",
     duration: "2 nap (hétvége)",
     dates: [
-      { date: "2026. április 4-5.", location: "Budapest VI. kerület" },
       { date: "2026. május 16-17.", location: "Tapolca" },
       { date: "2026. június 27-28.", location: "Budapest VI. kerület" },
       { date: "2026. július 25-26.", location: "Budapest VI. kerület" },
@@ -63,7 +62,6 @@ export const courses: Course[] = [
     ageRange: "10-18 év (felső tagozat és középiskola)",
     duration: "1 nap",
     dates: [
-      { date: "2026. április 25.", location: "Zalaegerszeg" },
       { date: "2026. október 3.", location: "Keszthely" },
     ],
     grades: [

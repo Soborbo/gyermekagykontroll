@@ -57,7 +57,7 @@ export const courses: Course[] = [
     ageRange: "10-18 év (felső tagozat és középiskola)",
     duration: "1 nap",
     dates: [
-      { date: "2026. április 25.", location: "Zalaegerszeg" },
+      { date: "2026. október 3.", location: "Keszthely" },
     ],
     grades: [
       "5. osztályos", "6. osztályos", "7. osztályos", "8. osztályos",

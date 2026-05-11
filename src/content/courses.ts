@@ -37,6 +37,7 @@ export const courses: Course[] = [
     dates: [
       { date: "2026. május 16-17.", location: "Tapolca" },
       { date: "2026. június 27-28.", location: "Budapest VI. kerület" },
+      { date: "2026. július 11-12.", location: "Keszthely" },
       { date: "2026. július 25-26.", location: "Budapest VI. kerület" },
       { date: "2026. augusztus 8-9.", location: "Keszthely" },
       { date: "2026. augusztus 29-30.", location: "Budapest VI. kerület" },

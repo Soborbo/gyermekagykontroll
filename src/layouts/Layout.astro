@@ -14,7 +14,8 @@ interface Props {
 const { title, description, ogImage, schema } = Astro.props;
 const pageTitle = title ? `${title} - ${siteConfig.name}` : siteConfig.title;
 const pageDescription = description || siteConfig.description;
-const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
+const canonicalPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const canonicalURL = new URL(canonicalPath, siteConfig.url);
 const ogImageURL = ogImage ? new URL(ogImage, siteConfig.url).href : new URL("/images/tanfolyam/nagy-kor.jpg", siteConfig.url).href;
 ---
 

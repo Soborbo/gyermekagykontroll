@@ -35,15 +35,9 @@ export const courses: Course[] = [
     ageRange: "Általános iskolás korú gyerekeknek",
     duration: "2 nap (hétvége)",
     dates: [
-      { date: "2026. május 16-17.", location: "Tapolca" },
-      { date: "2026. június 27-28.", location: "Budapest VI. kerület" },
-      { date: "2026. július 11-12.", location: "Keszthely" },
-      { date: "2026. augusztus 1-2.", location: "Budapest VI. kerület" },
-      { date: "2026. augusztus 8-9.", location: "Keszthely" },
-      { date: "2026. augusztus 29-30.", location: "Budapest VI. kerület" },
-      { date: "2026. szeptember 19-20.", location: "Budapest VI. kerület" },
       { date: "2026. október 17-18.", location: "Budapest VI. kerület" },
       { date: "2026. november 7-8.", location: "Keszthely" },
+      { date: "2026. december 12-13.", location: "Budapest VI. kerület" },
     ],
     grades: [
       "1. osztályos", "2. osztályos", "3. osztályos", "4. osztályos",
@@ -63,7 +57,7 @@ export const courses: Course[] = [
     ageRange: "10-18 év (felső tagozat és középiskola)",
     duration: "1 nap",
     dates: [
-      { date: "2026. október 3.", location: "Keszthely" },
+      { date: "2026. október 10.", location: "Keszthely" },
     ],
     grades: [
       "5. osztályos", "6. osztályos", "7. osztályos", "8. osztályos",

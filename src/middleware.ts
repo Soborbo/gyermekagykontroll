@@ -1,4 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
+import { resolveRedirect } from "./config/redirects";
 
 /**
  * Két URL-szintű szabály, ami a keresőt érinti.
@@ -21,7 +22,16 @@ export const onRequest = defineMiddleware((context, next) => {
     return context.redirect("/sitemap-index.xml", 301);
   }
 
-  // 2) Egy oldal = egy URL. Az Astro alapbeállításban a `/jelentkezes` és a
+  // 2) Régi WordPress URL-ek. A Cloudflare advanced mode (_worker.js) miatt a
+  //    public/_redirects NEM érvényesül, ezért a teljes térkép itt fut, MÉG a
+  //    perjel-levágás ELŐTT: a `/kapcsolat/` így egyetlen 301-gyel a
+  //    `/jelentkezes`-re megy, nem `/kapcsolat` -> 404 láncra.
+  const target = resolveRedirect(url.pathname);
+  if (target) {
+    return context.redirect(target + url.search, 301);
+  }
+
+  // 3) Egy oldal = egy URL. Az Astro alapbeállításban a `/jelentkezes` és a
   //    `/jelentkezes/` címen is kiszolgálja ugyanazt az oldalt, 200-as
   //    válasszal, önmagára mutató canonical-lal. A Google emiatt két külön
   //    oldalnak látta őket, és megosztotta közöttük a rangsorolási erőt — a

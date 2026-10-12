@@ -1,3 +1,11 @@
+# ============================================================================
+# CSAK DOKUMENTÁCIÓ — EZ A FÁJL NEM ÉRVÉNYESÜL!
+# A build `_worker.js`-t szállít (pages-build.mjs), ezért a Cloudflare Pages
+# "advanced mode"-ban fut, és a _redirects fájlt figyelmen kívül hagyja.
+# Az élő átirányítások: src/config/redirects.ts (a src/middleware.ts alkalmazza).
+# Új szabályt OTT vegyél fel; ezt a fájlt csak történeti referenciának tartjuk.
+# ============================================================================
+
 # Tartalom átirányítások (régi WordPress URL-ek -> új Astro oldalak)
 
 # Rólam oldal variánsok

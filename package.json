@@ -10,7 +10,8 @@
     "build": "astro build && rm -rf .wrangler/deploy && node pages-build.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-types": "wrangler types"
+    "generate-types": "wrangler types",
+    "test:redirects": "node --experimental-strip-types scripts/test-redirects.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.3",

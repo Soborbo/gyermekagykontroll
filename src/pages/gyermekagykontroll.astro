@@ -1,3 +1,6 @@
 ---
-return Astro.redirect("/gyermekagykontroll-agykontroll-gyermekeknek/", 301);
+// Csak tartalék: a src/middleware.ts (src/config/redirects.ts) már előbb
+// 301-gyel terel. A cél perjel nélküli, hogy ne legyen dupla ugrás.
+// A sitemapból az astro.config.mjs `filter`-e zárja ki.
+return Astro.redirect("/gyermekagykontroll-agykontroll-gyermekeknek", 301);
 ---

@@ -18,6 +18,12 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      // Átirányító csonk, köszönőoldal (noindex) és a máshová kanonikalizált
+      // blog-duplikátum nem kerül a sitemapba.
+      filter: (page) => {
+        const path = new URL(page).pathname.replace(/\/+$/, "");
+        return !["/gyermekagykontroll", "/koszonjuk", "/blog/gyermekagykontroll-tematika"].includes(path);
+      },
       // A kanonikus alak a perjel nélküli (lásd src/middleware.ts), ezért a
       // sitemap is azt sorolja fel. Enélkül minden sitemap-sor egy
       // átirányításra mutatna. A gyökér kivétel: ott a perjel a kanonikus.
